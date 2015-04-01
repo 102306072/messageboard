@@ -1,0 +1,25 @@
+<%= form_for(@massage) do |f| %>
+  <% if @massage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@massage.errors.count, "error") %> prohibited this massage from being saved:</h2>
+
+      <ul>
+      <% @massage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

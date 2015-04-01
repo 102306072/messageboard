@@ -1,0 +1,63 @@
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateMassages (20150401150726)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "massages" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "content" text, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20150401150726"]]
+  [1m[35m (1.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2015-04-01 23:14:01 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MassagesController#index as HTML
+  [1m[35mMassage Load (0.1ms)[0m  SELECT "massages".* FROM "massages"
+  Rendered massages/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 1999ms (Views: 1946.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/massages-64e62ddc273c2f5847f30d698ca14b67.css?body=1" for ::1 at 2015-04-01 23:14:03 +0800
+
+
+Started GET "/assets/massages-fcec5b5a277ac7c20cc9f45a209a3bcd.js?body=1" for ::1 at 2015-04-01 23:14:03 +0800
+
+
+Started GET "/massages/new" for ::1 at 2015-04-01 23:14:06 +0800
+Processing by MassagesController#new as HTML
+  Rendered massages/_form.html.erb (73.0ms)
+  Rendered massages/new.html.erb within layouts/application (95.2ms)
+Completed 200 OK in 152ms (Views: 147.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/massages" for ::1 at 2015-04-01 23:14:10 +0800
+Processing by MassagesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YZxg5Hd+x/fDpsQdT5CFk72DEQNAi4STtVkkyobz9tv4/SN4NlJ6qRZLR5KwNKCR6/9WYwa2DiFJ0z48s11mkg==", "massage"=>{"name"=>"ss", "content"=>"ff"}, "commit"=>"Create Massage"}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "massages" ("name", "content", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "ss"], ["content", "ff"], ["created_at", "2015-04-01 15:14:10.551862"], ["updated_at", "2015-04-01 15:14:10.551862"]]
+  [1m[36m (17.0ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/massages
+Completed 302 Found in 24ms (ActiveRecord: 17.5ms)
+
+
+Started GET "/massages" for ::1 at 2015-04-01 23:14:10 +0800
+Processing by MassagesController#index as HTML
+  [1m[35mMassage Load (0.2ms)[0m  SELECT "massages".* FROM "massages"
+  Rendered massages/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 55ms (Views: 53.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/massages/1" for ::1 at 2015-04-01 23:15:11 +0800
+Processing by MassagesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mMassage Load (0.2ms)[0m  [1mSELECT  "massages".* FROM "massages" WHERE "massages"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered massages/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 136ms (Views: 82.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/massages" for ::1 at 2015-04-01 23:15:13 +0800
+Processing by MassagesController#index as HTML
+  [1m[35mMassage Load (0.2ms)[0m  SELECT "massages".* FROM "massages"
+  Rendered massages/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 49ms (Views: 47.6ms | ActiveRecord: 0.2ms)
